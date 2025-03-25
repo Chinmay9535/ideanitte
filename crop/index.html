@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Rotation Assistant - BioBloom Solutions</title>
+    <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/favicon.ico">
+    <link rel="stylesheet" href="crop-rotation.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.4/raphael-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/justgage/1.2.9/justgage.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="logo.png" alt="BioBloom Logo" class="nav-logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="https://biobloom-ax7x.onrender.com/"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#" class="active"><i class="fas fa-seedling"></i> Crop Rotation</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="crop-rotation-tool" class="section active">
+            <h1><i class="fas fa-sync-alt"></i> Crop Rotation Assistant</h1>
+            <div class="tool-container">
+                <div class="input-section card">
+                    <h2><i class="fas fa-clipboard-list"></i> Enter Your Farm Details</h2>
+                    <form id="crop-rotation-form" autocomplete="off">
+                        <div class="form-group">
+                            <label for="previous-crop">Select Your Crop:</label>
+                            <select id="previous-crop" required autocomplete="off">
+                                <option value="">Select a crop</option>
+                                <option value="rice">Rice (Dhan)</option>
+                                <option value="wheat">Wheat (Gehun)</option>
+                                <option value="sugarcane">Sugarcane (Ganna)</option>
+                                <option value="pulses">Pulses (Dal)</option>
+                                <option value="cotton">Cotton (Kapas)</option>
+                                <option value="groundnut">Groundnut (Moongfali)</option>
+                                <option value="maize">Maize (Makka)</option>
+                                <option value="sorghum">Sorghum (Jowar)</option>
+                                <option value="pearl-millet">Pearl Millet (Bajra)</option>
+                                <option value="chickpea">Chickpea (Chana)</option>
+                                <option value="mustard">Mustard (Sarson)</option>
+                                <option value="moong">Green Gram (Moong)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="soil-type">Soil Type:</label>
+                            <select id="soil-type" required autocomplete="off">
+                                <option value="">Select soil type</option>
+                                <option value="clay">Clay</option>
+                                <option value="sandy">Sandy</option>
+                                <option value="loamy">Loamy</option>
+                                <option value="silty">Silty</option>
+                                <option value="peaty">Peaty</option>
+                            </select>
+                            <small class="helper-text">This will be auto-filled based on your crop selection</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="region">Region/Climate:</label>
+                            <select id="region" required autocomplete="off">
+                                <option value="">Select region</option>
+                                <option value="tropical">Tropical</option>
+                                <option value="subtropical">Subtropical</option>
+                                <option value="temperate">Temperate</option>
+                                <option value="arid">Arid</option>
+                                <option value="mediterranean">Mediterranean</option>
+                            </select>
+                            <small class="helper-text">This will be auto-filled based on your crop selection</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="farm-size">Farm Size (acres):</label>
+                            <input type="number" id="farm-size" min="1" required autocomplete="off">
+                        </div>
+                        <button type="submit" class="submit-btn"><i class="fas fa-check-circle"></i> Get Recommendations</button>
+                    </form>
+                </div>
+
+                <div class="results-section">
+                    <div class="card recommendation-card">
+                        <h2><i class="fas fa-lightbulb"></i> Your Recommendations</h2>
+                        <div class="results-placeholder">
+                            <i class="fas fa-seedling placeholder-icon"></i>
+                            <p>Fill out the form to get personalized recommendations for your farm.</p>
+                        </div>
+                        <div class="results-content">
+                            <h2 class="section-title">Your Crop Rotation Plan</h2>
+                            <div id="loading-message" style="display: none;">
+                                <p>Generating your personalized crop rotation plan...</p>
+                                <div class="spinner"></div>
+                            </div>
+                            <div id="recommendation-container" style="display: none;">
+                                <div id="aqi-container" class="aqi-container"></div>
+                                <div id="next-crop-recommendation"></div>
+                                <div id="fertilizer-recommendation"></div>
+                                <button id="download-report" class="btn">
+                                    <i class="fas fa-download"></i> Download Report
+                                </button>
+                            </div>
+                            <div id="error-container" style="display: none;"></div>
+                        </div>
+                    </div>
+
+                    <div class="card aqi-monitor-card">
+                        <h2><i class="fas fa-chart-line"></i> Air Quality Monitor</h2>
+                        <div class="location-consent-notice">
+                            <p><i class="fas fa-info-circle"></i> This tool uses your location to provide real-time air quality data. Your location information is not stored.</p>
+                        </div>
+                        <div class="aqi-info">
+                            <div id="aqi-gauge" class="aqi-gauge"></div>
+                            <div class="aqi-details">
+                                <div class="aqi-value" id="aqi-value">
+                                    <span id="aqi-number">--</span>
+                                    <span class="aqi-label">AQI</span>
+                                </div>
+                                <div class="aqi-status" id="aqi-status">Loading air quality data...</div>
+                            </div>
+                        </div>
+                        <div class="aqi-recommendations">
+                            <h3><i class="fas fa-tasks"></i> Recommended Farm Activities</h3>
+                            <ul id="aqi-activities" class="activity-list">
+                                <!-- Activities will be populated by JavaScript -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-section">
+                <div class="chart-container card">
+                    <h2><i class="fas fa-chart-bar"></i> AQI Impact Analysis</h2>
+                    <canvas id="aqiComparisonChart"></canvas>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-leaf"></i>
+                <span>BioBloom Solutions</span>
+            </div>
+            <div class="footer-copyright">
+                &copy; 2025 BioBloom Solutions. All rights reserved.
+            </div>
+            <div class="footer-social">
+                <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="crop-rotation.js"></script>
+</body>
+</html> 
