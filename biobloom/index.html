@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoFarm Assistant - Sustainable Farming Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="aqi-styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700&family=Roboto:wght@400;500&display=swap">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    </head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="logo.png" alt="EcoFarm Logo" class="logoo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="active button">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn button">Products</a>
+                        <div class="dropdown-menu">
+                            <a href="https://crop-rotatiion.netlify.app/" target="_blank">Crop Rotation Assistant</a>
+                            <a href="https://biofuel-one.vercel.app/" target="_blank">Biofuel</a>
+                            <a href="https://biobloom1.vercel.app/" target="_blank">Smart Farm</a>
+                        </div>
+                    </li>
+                    <li><a href="#info-section" class="button">About</a></li>
+                    <li><a href="#contact" class="button">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Sustainable Farming for Cleaner Air</h2>
+                    <p>Harness the power of AI to make farming smarter and greener.
+                        Get real-time insights to reduce pollution and boost crop yields.
+                        Optimize resources naturally while protecting the environment.
+                        Sustainable agriculture starts with smart decisions!.</p>
+                        <button class="custom-btn" id="get-started-btn" onclick="document.querySelector('.features').scrollIntoView({behavior: 'smooth'})">Get Started</button>
+                </div>
+                <div class="hero-image">
+                    <iframe src='https://my.spline.design/clonergrasscopy-3248dac448965b9f8abb4a77859c14fd/' frameborder='0' width='100%' height='300px'></iframe>
+                </div>
+            </div>
+        </section>
+
+        <section class="features" id="products">
+            <div class="container">
+                <h2 class="section-title">Our Products</h2>
+                <div class="feature-cards">
+                    <div class="feature-card">
+                        <div class="feature-icon">🌱</div>
+                        <h3>BioBloom Smart Farm</h3>
+                        <p>AI-powered smart farming solution that optimizes resource usage, monitors crop health, and provides real-time insights for sustainable agriculture.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>BioFuel</h3>
+                        <p>Innovative biofuel production system that converts agricultural waste into clean energy, reducing carbon emissions and providing alternative fuel solutions.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🌿</div>
+                        <h3>EcoFarm Assistant</h3>
+                        <p>Comprehensive farming companion that monitors air quality, provides sustainable farming recommendations, and helps maintain environmental balance.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>AQI-Based Alerts</h3>
+                        <p>Get real-time alerts and recommendations for optimal farming activities based on current air quality levels, helping reduce exposure to harmful conditions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="info-section" id="info-section">
+            <div class="container">
+                <h2 class="section-title">Why Choose BioBloom Solutions?</h2>
+                <div class="info-grid">
+                    <div class="info-card impact">
+                        <div class="info-icon">🌟</div>
+                        <h3>Innovation</h3>
+                        <p>Our AI-powered solutions combine cutting-edge technology with sustainable practices, making us the leader in smart farming and environmental solutions.</p>
+                    </div>
+                    <div class="info-card solution">
+                        <div class="info-icon">🎯</div>
+                        <h3>Proven Results</h3>
+                        <p>Our integrated approach has helped farmers achieve remarkable results: improved yields, reduced costs, and significant environmental impact reduction across all implementations.</p>
+                    </div>
+                    <div class="info-card benefits">
+                        <div class="info-icon">💪</div>
+                        <h3>Key Advantages</h3>
+                        <ul>
+                            <li>Real-time monitoring and insights</li>
+                            <li>Integrated smart farming solutions</li>
+                            <li>Sustainable waste-to-energy conversion</li>
+                            <li>24/7 environmental tracking</li>
+                        </ul>
+                    </div>
+                    <div class="info-card science">
+                        <div class="info-icon">🔬</div>
+                        <h3>Advanced Technology</h3>
+                        <p>Our solutions leverage machine learning, IoT sensors, and advanced analytics to provide precise, actionable insights for optimal farming and environmental management.</p>
+                    </div>
+                    <div class="info-card aqi-management">
+                        <div class="info-icon">🌿</div>
+                        <h3>Environmental Impact</h3>
+                        <ul>
+                            <li>40% reduction in environmental pollution</li>
+                            <li>60% decrease in resource wastage</li>
+                            <li>Sustainable energy production</li>
+                            <li>Enhanced biodiversity protection</li>
+                            <li>Improved air quality management</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="info-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">95%</span>
+                        <span class="stat-label">Customer Satisfaction</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">50%</span>
+                        <span class="stat-label">Cost Reduction</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">40%</span>
+                        <span class="stat-label">Efficiency Increase</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">60%</span>
+                        <span class="stat-label">Environmental Impact</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="aqi-comparison">
+            <div class="container">
+                <h2 class="section-title">AQI Impact Analysis</h2>
+                <div class="graph-container">
+                    <canvas id="aqiComparisonChart"></canvas>
+                </div>
+                <div class="graph-legend">
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: rgba(76, 175, 80, 0.5);"></span>
+                        <span>Without BioBloom Solutions</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color" style="background: rgba(34, 139, 34, 0.5);"></span>
+                        <span>With BioBloom Solutions</span>
+                    </div>
+                </div>
+                <div class="aqi-info-cards">
+                    <div class="aqi-info-card">
+                        <h4>Understanding the Impact</h4>
+                        <p>This graph demonstrates how BioBloom's smart farming solutions significantly reduce air pollution compared to traditional farming methods. Our integrated approach combines crop rotation, organic farming practices, and smart AQI monitoring to achieve better air quality throughout the year.</p>
+                    </div>
+                    <div class="aqi-info-card">
+                        <h4>Key Improvements</h4>
+                        <ul>
+                            <li>30-40% reduction in average AQI levels</li>
+                            <li>Up to 60% decrease in pollution during harvest seasons</li>
+                            <li>Consistent air quality improvement across all months</li>
+                            <li>Significant reduction in stubble burning impact</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="aqi-monitor">
+            <div class="container">
+                <h2 class="section-title">Current Air Quality Index</h2>
+                <div class="aqi-container">
+                    <div class="aqi-header">
+                        <div class="location-info">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span id="location-display">Detecting location...</span>
+                        </div>
+                        <div class="last-updated">
+                            <i class="fas fa-clock"></i>
+                            <span id="last-updated-time">Updating...</span>
+                        </div>
+                    </div>
+                    <div class="aqi-gauge">
+                        <div class="gauge-status" id="aqi-status">Loading...</div>
+                        <div class="gauge-ring">
+                            <div class="gauge-value" id="aqi-value">
+                                <span id="aqi-number">--</span>
+                                <span class="aqi-label">AQI</span>
+                            </div>
+                        </div>
+                        <div class="gauge-scale">
+                            <div class="scale-item good">Good<br/>(0-50)</div>
+                            <div class="scale-item moderate">Moderate<br/>(51-100)</div>
+                            <div class="scale-item unhealthy-sensitive">Unhealthy for Sensitive Groups<br/>(101-150)</div>
+                            <div class="scale-item unhealthy">Unhealthy<br/>(151-200)</div>
+                            <div class="scale-item very-unhealthy">Very Unhealthy<br/>(201+)</div>
+                        </div>
+                    </div>
+                    <div class="aqi-info">
+                        <div class="pollutants-section">
+                            <h3>Air Quality Details</h3>
+                            <div class="pollutant-grid">
+                                <!-- Pollutants will be dynamically inserted here -->
+                            </div>
+                        </div>
+                        <h3>AQI-Based Recommendations</h3>
+                        <div class="recommendations-container">
+                            <div id="aqi-recommendations" class="recommendations-list">
+                                <!-- AI-powered recommendations will be inserted here -->
+                            </div>
+                            <div class="recommendations-note">
+                                <p>* Recommendations are updated every 5 minutes based on current AQI levels.</p>
+                                <p>* Please follow local health guidelines for specific conditions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="EcoFarm Logo">
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#info-section">About</a></li>
+                        <li><a href="#products">Products</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact" id="contact">
+                    <h4>Contact Us</h4>
+                    <p>Email: info@biobloom.in</p>
+                    <p>Phone: +1 (555) 123-4567</p>
+    
+                    <!-- Social Media Icons -->
+                    <div class="social-icons">
+                        <a href="https://instagram.com" target="_blank" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://facebook.com" target="_blank" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 EcoFarm Assistant. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Font Awesome (Required for Icons) -->
+    <script src="https://kit.fontawesome.com/bfc8e7c08a.js" crossorigin="anonymous"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="config.js"></script>
+    <script src="aqi-service.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
+
